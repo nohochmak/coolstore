@@ -5,8 +5,6 @@ import com.enterprise.audit.logging.exception.AuditLoggingException;
 import com.enterprise.audit.logging.service.FileSystemAuditLogger;
 import com.redhat.coolstore.model.Order;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -22,6 +20,9 @@ public class OrderService {
 
   @Inject
   private EntityManager em;
+  
+  @Inject
+  private FileSystemAuditLogger auditLogger;
 
   public void save(Order order) {
     em.persist(order);
@@ -39,7 +40,7 @@ public class OrderService {
     return em.find(Order.class, id);
   }
 
-  private FileSystemAuditLogger auditLogger;
+  // private FileSystemAuditLogger auditLogger;
 
   @PostConstruct
   public void init() throws AuditLoggingException {
