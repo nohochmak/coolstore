@@ -47,8 +47,9 @@
             <groupId>com.enterprise</groupId>
             <artifactId>audit-logging-library</artifactId>
             <version>1.0.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/audit-logging-library-1.0.0.jar</systemPath>
+            <!-- Note: This does NOT package the library into the war file.  So push it to the maven repo directly. -->
+            <!-- <scope>system</scope>
+            <systemPath>${project.basedir}/lib/audit-logging-library-1.0.0.jar</systemPath> -->
         </dependency>        
     </dependencies>
     <build>
