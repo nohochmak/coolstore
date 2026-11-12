@@ -1,13 +1,13 @@
 package com.redhat.coolstore.service;
 
-import com.enterprise.audit.logging.config.AuditConfiguration;
-import com.enterprise.audit.logging.exception.AuditLoggingException;
-import com.enterprise.audit.logging.service.FileSystemAuditLogger;
+// import com.enterprise.audit.logging.config.AuditConfiguration;
+// import com.enterprise.audit.logging.exception.AuditLoggingException;
+// import com.enterprise.audit.logging.service.FileSystemAuditLogger;
 import com.redhat.coolstore.model.Order;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
+// import javax.annotation.PostConstruct;
+// import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -21,8 +21,8 @@ public class OrderService {
   @Inject
   private EntityManager em;
   
-  @Inject
-  private FileSystemAuditLogger auditLogger;
+  // @Inject
+  // private FileSystemAuditLogger auditLogger;
 
   public void save(Order order) {
     em.persist(order);
@@ -42,21 +42,21 @@ public class OrderService {
 
   // private FileSystemAuditLogger auditLogger;
 
-  @PostConstruct
-  public void init() throws AuditLoggingException {
-    // Initialize audit logger
-    AuditConfiguration config = new AuditConfiguration();
-    config.setLogDirectory("./device-inventory-audit-logs");
-    config.setAutoCreateDirectory(true);
-    auditLogger = new FileSystemAuditLogger(config);
+  // @PostConstruct
+  // public void init() throws AuditLoggingException {
+  //   // Initialize audit logger
+  //   AuditConfiguration config = new AuditConfiguration();
+  //   config.setLogDirectory("./device-inventory-audit-logs");
+  //   config.setAutoCreateDirectory(true);
+  //   auditLogger = new FileSystemAuditLogger(config);
 
-  }
+  // }
 
-  @PreDestroy
-  public void cleanup() throws AuditLoggingException {
-    if (auditLogger != null) {
-      auditLogger.close();
-    }
-  }
+  // @PreDestroy
+  // public void cleanup() throws AuditLoggingException {
+  //   if (auditLogger != null) {
+  //     auditLogger.close();
+  //   }
+  // }
 
 }
